@@ -1,0 +1,17 @@
+<h1>Lista de empleados</h1>
+<!--div class="list">
+    <app-carditem [employee]="firstEmployee" (employeeSelected)="onEmployeeChecked($event)"></app-carditem>
+    <app-carditem [employee]="secondEmployee" (employeeSelected)="onEmployeeChecked($event)"></app-carditem>
+    <app-carditem [employee]="thirtEmployee" (employeeSelected)="onEmployeeChecked($event)"></app-carditem>
+    <app-carditem [employee]="fourthEmployee" (employeeSelected)="onEmployeeChecked($event)"></app-carditem>
+</div-->
+<div class="list">
+    <ng-container  *ngFor="let employee of employees; let i = index" >
+        <ng-container *ngIf="employee.isactive">
+            <app-carditem [employee]="employee" [indice]="i" (employeeSelected)="onEmployeeChecked($event)"></app-carditem>
+        </ng-container> 
+    </ng-container>
+</div>
+
+<h4 *ngIf="selectedEmployee">Empleado seleccionado: {{selectedEmployee.name}}</h4>
+<h4>Hoy: {{today | date:'dd/MM/YYYY'}}</h4>
